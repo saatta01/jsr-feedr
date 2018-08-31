@@ -92,7 +92,7 @@ function successHandler() {
         sourceName = newsData.articles[i].source.name,
         url = newsData.articles[i].url,
         imgUrl = newsData.articles[i].urlToImage,
-        pubTime = newsData.articles[i].publishedAt;
+        pubTime = new Date(newsData.articles[i].publishedAt);
 
     article.classList = 'article';
     article.innerHTML = `<section class="featuredImage">
@@ -100,7 +100,7 @@ function successHandler() {
                             </section>
                             <section class="articleContent">
                                 <a href="#"><h3>${headline}</h3></a>
-                                <h6>${author} Published at: ${pubTime}</h6>
+                                <h6>${author} Published at: ${pubTime.toUTCString()}</h6>
                             </section>
                             <section class="impressions">
                               ${sourceName}
