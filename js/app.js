@@ -19,15 +19,15 @@ const mainDiv = document.getElementById('main'),
 const xhr = new XMLHttpRequest();
 
 // create an array of sources for our news feed - right now, we are only doing three
-const sources = ['Wired', 'IGN', 'Associated Press'];
+const sources = ['Wired', 'IGN', 'Ars Technica'];
 
+// let's loop over every li in our dropdown to change the content and set the functionality.
 navDropdowns.forEach((currentValue, index) => {
   currentValue.innerText = sources[index];
 
   currentValue.addEventListener('click', function() {
     event.preventDefault;
-    let source = sources[index].toLowerCase();
-    console.log(source);
+    let source = sources[index].toLowerCase(); // our API wants our news source lowercased
 
     APICall(source);
 
@@ -35,13 +35,11 @@ navDropdowns.forEach((currentValue, index) => {
 });
 
 // if the user clicks on the logo, let's load ALL the sources!
-
 logo.addEventListener('click', function() {
   APICall('all');
 });
 
 // if the user clicks on the search, let's open and close it
-
 searchBtn.addEventListener('click', function() {
   if(searchField.classList.contains('active')) {
     searchField.classList = '';
@@ -52,10 +50,10 @@ searchBtn.addEventListener('click', function() {
 
 // make the API call per news source
 function APICall(source) {
-  // make sure spaces get turned to dashes!
+  // make sure any spaces get turned to dashes!
   source = source.replace(/\s/g , "-");
 
-  // if we want ALL of our feeds - let's pass them through to the API the way it wants them
+  // if we want ALL of our feeds - let's pass that array through to the API the way it wants them
   if(source === "all") {
     source = sources.join(","); // converts the array to string, separating each item with a comma
     source = source.toLowerCase(); // converts our new string to lowercase
@@ -68,7 +66,6 @@ function APICall(source) {
   xhr.send();
   xhr.onerror = errorHandler;
   xhr.onload = successHandler;
-
 }
 
 function errorHandler() {
@@ -140,11 +137,10 @@ function buttonAction(modalData, modalBtns) {
   })
 }
 
-
 // start the app in the loading state
 popup.classList = "loader";
 
-// this all loads too fast! So put a timeout function to show the loader icon
+// this all loads too fast! So let's put a timeout function to show the loader icon and load them when the page loads!
 window.setTimeout(function() { APICall('all'); }, 1000);
 
 
