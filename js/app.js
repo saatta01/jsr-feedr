@@ -59,6 +59,7 @@ function APICall(source) {
     source = source.toLowerCase(); // converts our new string to lowercase
     source = source.replace(/\s/g , "-");
   }
+
   // until we have data, let's show the loader
   popup.classList = "loader";
 
@@ -85,6 +86,7 @@ function successHandler() {
   // for every article we get back, let's make some html
   for(let i = 0; i < newsData.totalResults; i++) {
     let article = document.createElement('article'); // create an article element
+
 
     // grab all of the content we will need from the news sources
     let headline = newsData.articles[i].title,
