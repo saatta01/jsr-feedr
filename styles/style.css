@@ -174,7 +174,7 @@ nav ul li:hover > ul {
 
 /* First Tier Dropdown */
 nav ul ul li {
-	width:170px;
+	width:199px;
 	float:none;
 	display:list-item;
 	position: relative;
@@ -230,8 +230,8 @@ nav ul ul li {
 .article .impressions {
   width: 15%;
   float: right;
-  font-size: 30px;
-  margin-top: 15px;
+  font-size: 1.17em;
+  margin-top: 19px;
   text-align: right;
-  color: #097FB2;
+  color: #666;
 }
